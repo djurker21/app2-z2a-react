@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { TextField } from "@mui/material";
 
 export default function AddModal() {
   const [open, setOpen] = React.useState(false);
@@ -34,9 +35,10 @@ export default function AddModal() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add Country
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <TextField id="country" label="Country" variant="standard" />
+          <TextField id="code" label="Code" variant="standard" />
+          <TextField id="flag" label="Flag" variant="standard" />
+          <Button onClick={handleClose}>Save</Button>
         </Box>
       </Modal>
     </div>

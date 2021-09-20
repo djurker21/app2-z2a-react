@@ -2,15 +2,26 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import AddModal from "./AddModal";
 import EditModal from "./EditModal";
+import { useState } from "react";
 
-const countries = [
+export type Country = {
+  name: string;
+  code: string;
+  flag: string;
+};
+
+const countries: Country[] = [
   { name: "Germany", code: "123", flag: "german_flag.png" },
   { name: "Mexico", code: "456", flag: "mexican_flag.png" },
 ];
 
 export default function CML() {
-  const [openEdit, setOpenEdit] = React.useState(false);
-  const handleOpenEdit = () => setOpenEdit(true);
+  const [openEdit, setOpenEdit] = useState(false);
+  const [edit, setEdit] = useState({ name: "", code: "", flag: "" });
+  const handleOpenEdit = (i: any) => {
+    setEdit(countries[i]);
+    setOpenEdit(true);
+  };
   const handleCloseEdit = () => setOpenEdit(false);
 
   const listCountries = countries.map((country, i) => (
@@ -19,7 +30,7 @@ export default function CML() {
       <td>{country.code}</td>
       <td>{country.flag}</td>
       <td>
-        <Button onClick={handleOpenEdit}>edit</Button>
+        <Button onClick={() => handleOpenEdit(i)}>edit</Button>
         <Button>delete</Button>
       </td>
     </tr>
@@ -29,7 +40,11 @@ export default function CML() {
     <div className="content">
       <h1>Country Management List</h1>
       <AddModal />
-      <EditModal openEdit={openEdit} handleClose={handleCloseEdit} />
+      <EditModal
+        openEdit={openEdit}
+        handleClose={handleCloseEdit}
+        edit={edit}
+      />
       <table>
         <thead>
           <tr>

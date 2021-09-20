@@ -3,10 +3,13 @@ import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { useState } from "react";
+import { Country } from "./CML";
+import { Button, TextField } from "@mui/material";
 
 export default function EditModal(props: {
   openEdit: boolean;
   handleClose: any;
+  edit: Country;
 }) {
   const [open, setOpen] = useState(props.openEdit);
 
@@ -38,9 +41,25 @@ export default function EditModal(props: {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit Country
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <TextField
+            id="country"
+            label="Country"
+            variant="standard"
+            value={props.edit.name}
+          />
+          <TextField
+            id="code"
+            label="Code"
+            variant="standard"
+            value={props.edit.code}
+          />
+          <TextField
+            id="flag"
+            label="Flag"
+            variant="standard"
+            value={props.edit.flag}
+          />
+          <Button onClick={props.handleClose}>Save</Button>
         </Box>
       </Modal>
     </div>
