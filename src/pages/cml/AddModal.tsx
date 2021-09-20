@@ -4,11 +4,24 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { TextField } from "@mui/material";
+import { useState } from "react";
 
 export default function AddModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [name, setName] = useState("");
+  const [code, setCode] = useState("");
+  const [flag, setFlag] = useState("");
+
+  function handleSave() {
+    console.log({ name, code, flag });
+    setName("");
+    setCode("");
+    setFlag("");
+    handleClose();
+  }
 
   return (
     <div>
@@ -35,10 +48,28 @@ export default function AddModal() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Add Country
           </Typography>
-          <TextField id="country" label="Country" variant="standard" />
-          <TextField id="code" label="Code" variant="standard" />
-          <TextField id="flag" label="Flag" variant="standard" />
-          <Button onClick={handleClose}>Save</Button>
+          <TextField
+            id="country"
+            label="Country"
+            variant="standard"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            id="code"
+            label="Code"
+            variant="standard"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+          />
+          <TextField
+            id="flag"
+            label="Flag"
+            variant="standard"
+            value={flag}
+            onChange={(e) => setFlag(e.target.value)}
+          />
+          <Button onClick={handleSave}>Save</Button>
         </Box>
       </Modal>
     </div>

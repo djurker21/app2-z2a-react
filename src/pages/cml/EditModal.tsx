@@ -13,9 +13,21 @@ export default function EditModal(props: {
 }) {
   const [open, setOpen] = useState(props.openEdit);
 
+  const [name, setName] = useState("");
+  const [code, setCode] = useState("");
+  const [flag, setFlag] = useState("");
+
+  function handleSave() {
+    console.log({ name, code, flag });
+    props.handleClose();
+  }
+
   React.useEffect(() => {
     setOpen(props.openEdit);
-  }, [props.openEdit]);
+    setName(props.edit.name);
+    setCode(props.edit.code);
+    setFlag(props.edit.flag);
+  }, [props.openEdit, props.edit.name, props.edit.code, props.edit.flag]);
 
   return (
     <div>
@@ -45,21 +57,24 @@ export default function EditModal(props: {
             id="country"
             label="Country"
             variant="standard"
-            value={props.edit.name}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <TextField
             id="code"
             label="Code"
             variant="standard"
-            value={props.edit.code}
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
           />
           <TextField
             id="flag"
             label="Flag"
             variant="standard"
-            value={props.edit.flag}
+            value={flag}
+            onChange={(e) => setFlag(e.target.value)}
           />
-          <Button onClick={props.handleClose}>Save</Button>
+          <Button onClick={handleSave}>Save</Button>
         </Box>
       </Modal>
     </div>
