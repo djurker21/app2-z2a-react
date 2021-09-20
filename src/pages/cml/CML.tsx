@@ -1,11 +1,12 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
+import AddModal from "./AddModal";
 
 export default function CML() {
   return (
     <div className="content">
       <h1>Country Management List</h1>
-      <Button variant="contained">Add Country</Button>
+      <AddModal />
       <table>
         <thead>
           <tr>
