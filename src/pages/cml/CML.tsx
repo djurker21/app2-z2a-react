@@ -4,6 +4,8 @@ import AddModal from "./AddModal";
 import EditModal from "./EditModal";
 import { useState } from "react";
 
+import API from "../../api";
+
 export type Country = {
   name: string;
   code: string;
@@ -24,6 +26,11 @@ export default function CML() {
   };
   const handleCloseEdit = () => setOpenEdit(false);
 
+  async function deleteCountry(i: any) {
+    const result = await API.delete(`countries/${i}`);
+    console.log(result);
+  }
+
   const listCountries = countries.map((country, i) => (
     <tr key={i}>
       <td>{country.name}</td>
@@ -31,7 +38,7 @@ export default function CML() {
       <td>{country.flag}</td>
       <td>
         <Button onClick={() => handleOpenEdit(i)}>edit</Button>
-        <Button>delete</Button>
+        <Button onClick={() => deleteCountry(i)}>delete</Button>
       </td>
     </tr>
   ));
