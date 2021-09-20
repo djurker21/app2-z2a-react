@@ -1,12 +1,18 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import AddModal from "./AddModal";
+import EditModal from "./EditModal";
 
 export default function CML() {
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const handleOpenEdit = () => setOpenEdit(true);
+  const handleCloseEdit = () => setOpenEdit(false);
+
   return (
     <div className="content">
       <h1>Country Management List</h1>
       <AddModal />
+      <EditModal openEdit={openEdit} handleClose={handleCloseEdit} />
       <table>
         <thead>
           <tr>
@@ -22,7 +28,7 @@ export default function CML() {
             <td>1232131</td>
             <td>germany_flag.png</td>
             <td>
-              <Button>edit</Button>
+              <Button onClick={handleOpenEdit}>edit</Button>
               <Button>delete</Button>
             </td>
           </tr>
@@ -31,7 +37,7 @@ export default function CML() {
             <td>1232131</td>
             <td>mexico_flag.png</td>
             <td>
-              <Button>edit</Button>
+              <Button onClick={handleOpenEdit}>edit</Button>
               <Button>delete</Button>
             </td>
           </tr>
