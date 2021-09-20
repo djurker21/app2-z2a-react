@@ -3,10 +3,27 @@ import Button from "@mui/material/Button";
 import AddModal from "./AddModal";
 import EditModal from "./EditModal";
 
+const countries = [
+  { name: "Germany", code: "123", flag: "german_flag.png" },
+  { name: "Mexico", code: "456", flag: "mexican_flag.png" },
+];
+
 export default function CML() {
   const [openEdit, setOpenEdit] = React.useState(false);
   const handleOpenEdit = () => setOpenEdit(true);
   const handleCloseEdit = () => setOpenEdit(false);
+
+  const listCountries = countries.map((country, i) => (
+    <tr key={i}>
+      <td>{country.name}</td>
+      <td>{country.code}</td>
+      <td>{country.flag}</td>
+      <td>
+        <Button onClick={handleOpenEdit}>edit</Button>
+        <Button>delete</Button>
+      </td>
+    </tr>
+  ));
 
   return (
     <div className="content">
@@ -22,26 +39,7 @@ export default function CML() {
             <th>actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Germany</td>
-            <td>1232131</td>
-            <td>germany_flag.png</td>
-            <td>
-              <Button onClick={handleOpenEdit}>edit</Button>
-              <Button>delete</Button>
-            </td>
-          </tr>
-          <tr>
-            <td>Mexico</td>
-            <td>1232131</td>
-            <td>mexico_flag.png</td>
-            <td>
-              <Button onClick={handleOpenEdit}>edit</Button>
-              <Button>delete</Button>
-            </td>
-          </tr>
-        </tbody>
+        <tbody>{listCountries}</tbody>
       </table>
     </div>
   );
