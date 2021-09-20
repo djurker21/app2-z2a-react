@@ -1,7 +1,11 @@
+import * as React from "react";
+import Button from "@mui/material/Button";
+
 export default function CML() {
   return (
     <div className="content">
       <h1>Country Management List</h1>
+      <Button variant="contained">Add Country</Button>
       <table>
         <thead>
           <tr>
@@ -17,8 +21,8 @@ export default function CML() {
             <td>1232131</td>
             <td>germany_flag.png</td>
             <td>
-              <button>edit</button>
-              <button>delete</button>
+              <Button>edit</Button>
+              <Button>delete</Button>
             </td>
           </tr>
           <tr>
@@ -26,8 +30,8 @@ export default function CML() {
             <td>1232131</td>
             <td>mexico_flag.png</td>
             <td>
-              <button>edit</button>
-              <button>delete</button>
+              <Button>edit</Button>
+              <Button>delete</Button>
             </td>
           </tr>
         </tbody>
