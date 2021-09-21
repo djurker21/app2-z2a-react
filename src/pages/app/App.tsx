@@ -1,30 +1,25 @@
 import "./App.scss";
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Sidebar from "../sidebar/Sidebar";
-import Home from "../home/Home";
+import Layout from "../layout/Layout";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CML from "../cml/CML";
 import Map from "../map/Map";
-
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
-        <Sidebar />
-
-        <Switch>
-          <Route path="/cml">
-            <CML />
-          </Route>
-          <Route path="/map">
-            <Map />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-        </Switch>
+        <Layout>
+          <Switch>
+            <Route exact path="/cml">
+              <CML />
+            </Route>
+            <Route exact path="/map">
+              <Map />
+            </Route>
+          </Switch>
+        </Layout>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 

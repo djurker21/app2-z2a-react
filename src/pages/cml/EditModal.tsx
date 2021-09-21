@@ -7,13 +7,13 @@ import { Country } from "./CML";
 import { Button, TextField } from "@mui/material";
 
 type PropsType = {
-    openEdit: boolean;
-    handleClose: any;
-    edit: Country;
-}
+  openEdit: boolean;
+  handleClose: any;
+  edit: Country;
+};
 
 export default function EditModal(props: PropsType) {
-  const {openEdit, handleClose, edit} = props;
+  const { openEdit, handleClose, edit } = props;
   const [open, setOpen] = useState(openEdit);
 
   const [name, setName] = useState("");
