@@ -39,8 +39,8 @@ export default function CML() {
       <td>{country.code}</td>
       <td>{country.flag}</td>
       <td>
-        <Button onClick={() => handleOpenEdit(i)}>edit</Button>
-        <Button onClick={() => deleteCountry(i)}>delete</Button>
+        <Button variant="contained" color="primary" onClick={() => handleOpenEdit(i)}>edit</Button>
+        <Button variant="contained" color="error" onClick={() => deleteCountry(i)}>delete</Button>
       </td>
     </tr>
   ));
