@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import AddDialog from "./AddDialog";
 import EditDialog from "./EditDialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Table,
@@ -22,19 +22,14 @@ export type Country = {
   flag: string;
 };
 
-const countries: Country[] = [
-  { name: "Germany", code: "123", flag: "german_flag.png" },
-  { name: "Mexico", code: "456", flag: "mexican_flag.png" },
-  { name: "Ukraine", code: "262", flag: "ukrainian_flag.png" },
-  { name: "Russia", code: "305", flag: "russian_flag.png" },
-  { name: "Poland", code: "356", flag: "polish_flag.png" },
-];
+const countriesInit: Country[] = [];
 
 const initValues = { name: "", code: "", flag: "" };
 
 export default function CML() {
   const [openEdit, setOpenEdit] = useState(false);
   const [edit, setEdit] = useState(initValues);
+  const [countries, setCountries] = useState(countriesInit);
   const handleOpenEdit = (i: any) => {
     setEdit(countries[i]);
     setOpenEdit(true);
@@ -45,6 +40,12 @@ export default function CML() {
     const result = await API.delete(`countries/${i}`);
     console.log(result);
   }
+
+  useEffect(() => {
+    API.get(`countries`).then((res) => {
+      setCountries(res.data);
+    });
+  }, []);
 
   return (
     <div className="content">
