@@ -23,6 +23,9 @@ export type Country = {
 const countries: Country[] = [
   { name: "Germany", code: "123", flag: "german_flag.png" },
   { name: "Mexico", code: "456", flag: "mexican_flag.png" },
+  { name: "Ukraine", code: "262", flag: "ukrainian_flag.png" },
+  { name: "Russia", code: "305", flag: "russian_flag.png" },
+  { name: "Poland", code: "356", flag: "polish_flag.png" },
 ];
 
 const initValues = { name: "", code: "", flag: "" };
@@ -40,18 +43,6 @@ export default function CML() {
     const result = await API.delete(`countries/${i}`);
     console.log(result);
   }
-
-  function createData(name: string, code: string, flag: string) {
-    return { name, code, flag };
-  }
-
-  const rows = [
-    createData("Germany", "159", "german_flag.png"),
-    createData("Mexico", "237", "mexican_flag.png"),
-    createData("Ukraine", "262", "ukrainian_flag.png"),
-    createData("Russia", "305", "russian_flag.png"),
-    createData("Poland", "356", "polish_flag.png"),
-  ];
 
   return (
     <div className="content">
@@ -73,7 +64,7 @@ export default function CML() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row, i) => (
+            {countries.map((row, i) => (
               <TableRow
                 key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
