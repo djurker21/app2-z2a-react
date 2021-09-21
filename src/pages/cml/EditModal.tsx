@@ -6,12 +6,15 @@ import { useState } from "react";
 import { Country } from "./CML";
 import { Button, TextField } from "@mui/material";
 
-export default function EditModal(props: {
-  openEdit: boolean;
-  handleClose: any;
-  edit: Country;
-}) {
-  const [open, setOpen] = useState(props.openEdit);
+type PropsType = {
+    openEdit: boolean;
+    handleClose: any;
+    edit: Country;
+}
+
+export default function EditModal(props: PropsType) {
+  const {openEdit, handleClose, edit} = props;
+  const [open, setOpen] = useState(openEdit);
 
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
@@ -19,21 +22,21 @@ export default function EditModal(props: {
 
   function handleSave() {
     console.log({ name, code, flag });
-    props.handleClose();
+    handleClose();
   }
 
   React.useEffect(() => {
-    setOpen(props.openEdit);
-    setName(props.edit.name);
-    setCode(props.edit.code);
-    setFlag(props.edit.flag);
-  }, [props.openEdit, props.edit.name, props.edit.code, props.edit.flag]);
+    setOpen(openEdit);
+    setName(edit.name);
+    setCode(edit.code);
+    setFlag(edit.flag);
+  }, [openEdit, edit.name, edit.code, edit.flag]);
 
   return (
     <div>
       <Modal
         open={open}
-        onClose={props.handleClose}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >

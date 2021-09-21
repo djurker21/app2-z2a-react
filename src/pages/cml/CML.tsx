@@ -17,9 +17,11 @@ const countries: Country[] = [
   { name: "Mexico", code: "456", flag: "mexican_flag.png" },
 ];
 
+const initValues = { name: "", code: "", flag: "" };
+
 export default function CML() {
   const [openEdit, setOpenEdit] = useState(false);
-  const [edit, setEdit] = useState({ name: "", code: "", flag: "" });
+  const [edit, setEdit] = useState(initValues);
   const handleOpenEdit = (i: any) => {
     setEdit(countries[i]);
     setOpenEdit(true);
