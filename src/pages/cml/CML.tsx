@@ -1,16 +1,18 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import AddModal from "./AddModal";
-import EditModal from "./EditModal";
+import AddDialog from "./AddDialog";
+import EditDialog from "./EditDialog";
 import { useState } from "react";
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 
 import API from "../../api";
 
@@ -47,8 +49,8 @@ export default function CML() {
   return (
     <div className="content">
       <h1>Country Management List</h1>
-      <AddModal />
-      <EditModal
+      <AddDialog />
+      <EditDialog
         openEdit={openEdit}
         handleClose={handleCloseEdit}
         edit={edit}

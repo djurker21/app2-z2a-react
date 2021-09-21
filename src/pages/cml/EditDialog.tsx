@@ -1,15 +1,24 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { TextField } from "@mui/material";
+import {
+  Dialog,
+  TextField,
+  Button,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import { useState } from "react";
+import { Country } from "./CML";
 
-export default function AddModal() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+type PropsType = {
+  openEdit: boolean;
+  handleClose: any;
+  edit: Country;
+};
+
+export default function EditDialog(props: PropsType) {
+  const { openEdit, handleClose, edit } = props;
+  const [open, setOpen] = useState(openEdit);
 
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
@@ -17,39 +26,26 @@ export default function AddModal() {
 
   function handleSave() {
     console.log({ name, code, flag });
-    setName("");
-    setCode("");
-    setFlag("");
     handleClose();
   }
 
+  React.useEffect(() => {
+    setOpen(openEdit);
+    setName(edit.name);
+    setCode(edit.code);
+    setFlag(edit.flag);
+  }, [openEdit, edit.name, edit.code, edit.flag]);
+
   return (
     <div>
-      <Button variant="contained" color="success" onClick={handleOpen}>
-        Add Country
-      </Button>
-      <Modal
+      <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 400,
-            bgcolor: "background.paper",
-            border: "2px solid #000",
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Add Country
-          </Typography>
+        <DialogTitle>Edit Country</DialogTitle>
+        <DialogContent>
           <TextField
             id="country"
             label="Country"
@@ -71,11 +67,13 @@ export default function AddModal() {
             value={flag}
             onChange={(e) => setFlag(e.target.value)}
           />
+        </DialogContent>
+        <DialogActions>
           <Button variant="contained" color="primary" onClick={handleSave}>
             Save
           </Button>
-        </Box>
-      </Modal>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
