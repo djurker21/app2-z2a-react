@@ -77,7 +77,9 @@ export default function EditModal(props: PropsType) {
             value={flag}
             onChange={(e) => setFlag(e.target.value)}
           />
-          <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
+          <Button variant="contained" color="primary" onClick={handleSave}>
+            Save
+          </Button>
         </Box>
       </Modal>
     </div>

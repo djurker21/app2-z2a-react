@@ -25,7 +25,9 @@ export default function AddModal() {
 
   return (
     <div>
-      <Button variant="contained" color="success" onClick={handleOpen}>Add Country</Button>
+      <Button variant="contained" color="success" onClick={handleOpen}>
+        Add Country
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -69,7 +71,9 @@ export default function AddModal() {
             value={flag}
             onChange={(e) => setFlag(e.target.value)}
           />
-          <Button variant="contained" color="primary" onClick={handleSave}>Save</Button>
+          <Button variant="contained" color="primary" onClick={handleSave}>
+            Save
+          </Button>
         </Box>
       </Modal>
     </div>
