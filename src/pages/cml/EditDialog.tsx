@@ -38,8 +38,7 @@ export default function EditDialog(props: PropsType) {
     setName(edit.name);
     setCode(edit.code);
     setFlag(edit.flag);
-    setLatLong(edit.lat_long)
-
+    setLatLong(edit.lat_long);
   }, [openEdit, edit.id, edit.name, edit.code, edit.flag, edit.lat_long]);
 
   return (
@@ -74,11 +73,11 @@ export default function EditDialog(props: PropsType) {
             onChange={(e) => setFlag(e.target.value)}
           />
           <TextField
-              id="lat_long"
-              label="LatLong"
-              variant="standard"
-              value={lat_long}
-              onChange={(e) => setLatLong(e.target.value)}
+            id="lat_long"
+            label="LatLong"
+            variant="standard"
+            value={lat_long}
+            onChange={(e) => setLatLong(e.target.value)}
           />
         </DialogContent>
         <DialogActions>

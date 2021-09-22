@@ -12,6 +12,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  TablePagination,
 } from "@mui/material";
 
 import API from "../../api";
@@ -48,6 +49,10 @@ export default function CML() {
       setCountries(res.data);
     });
   }, []);
+
+  function handleChangePage() {
+    console.log("page change");
+  }
 
   return (
     <div className="content">
@@ -102,6 +107,13 @@ export default function CML() {
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        count={countries.length}
+        rowsPerPage={5}
+        page={0}
+        onPageChange={handleChangePage}
+      />
     </div>
   );
 }

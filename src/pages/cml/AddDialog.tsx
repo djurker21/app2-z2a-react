@@ -24,7 +24,7 @@ export default function AddDialog() {
     setName("");
     setCode("");
     setFlag("");
-    setLatLong("")
+    setLatLong("");
     await API.post("countries", { name, code, flag, lat_long });
     handleClose();
   }
@@ -64,11 +64,11 @@ export default function AddDialog() {
             onChange={(e) => setFlag(e.target.value)}
           />
           <TextField
-              id="lat_long"
-              label="LatLong"
-              variant="standard"
-              value={lat_long}
-              onChange={(e) => setLatLong(e.target.value)}
+            id="lat_long"
+            label="LatLong"
+            variant="standard"
+            value={lat_long}
+            onChange={(e) => setLatLong(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
