@@ -18,13 +18,14 @@ export default function AddDialog() {
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [flag, setFlag] = useState("");
+  const [lat_long, setLatLong] = useState("");
 
   async function handleSave() {
-    console.log({ name, code, flag });
     setName("");
     setCode("");
     setFlag("");
-    await API.post("countries", { name, code, flag });
+    setLatLong("")
+    await API.post("countries", { name, code, flag, lat_long });
     handleClose();
   }
 
@@ -61,6 +62,13 @@ export default function AddDialog() {
             variant="standard"
             value={flag}
             onChange={(e) => setFlag(e.target.value)}
+          />
+          <TextField
+              id="lat_long"
+              label="LatLong"
+              variant="standard"
+              value={lat_long}
+              onChange={(e) => setLatLong(e.target.value)}
           />
         </DialogContent>
         <DialogActions>

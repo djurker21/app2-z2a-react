@@ -21,11 +21,12 @@ export type Country = {
   name: string;
   code: string;
   flag: string;
+  lat_long: string;
 };
 
 const countriesInit: Country[] = [];
 
-const initValues = { id: 0, name: "", code: "", flag: "" };
+const initValues = { id: 0, name: "", code: "", flag: "", lat_long: "" };
 
 export default function CML() {
   const [openEdit, setOpenEdit] = useState(false);
@@ -64,6 +65,7 @@ export default function CML() {
               <TableCell>Country</TableCell>
               <TableCell align="right">Code</TableCell>
               <TableCell align="right">Flag</TableCell>
+              <TableCell align="right">LatLong</TableCell>
               <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
@@ -78,6 +80,7 @@ export default function CML() {
                 </TableCell>
                 <TableCell align="right">{row.code}</TableCell>
                 <TableCell align="right">{row.flag}</TableCell>
+                <TableCell align="right">{row.lat_long}</TableCell>
                 <TableCell align="right">
                   <Button
                     variant="contained"

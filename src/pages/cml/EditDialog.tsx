@@ -25,10 +25,10 @@ export default function EditDialog(props: PropsType) {
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [flag, setFlag] = useState("");
+  const [lat_long, setLatLong] = useState("");
 
   async function handleSave() {
-    console.log({ name, code, flag });
-    await API.patch(`countries/${id}`, { id, name, code, flag });
+    await API.patch(`countries/${id}`, { id, name, code, flag, lat_long });
     handleClose();
   }
 
@@ -38,7 +38,9 @@ export default function EditDialog(props: PropsType) {
     setName(edit.name);
     setCode(edit.code);
     setFlag(edit.flag);
-  }, [openEdit, edit.id, edit.name, edit.code, edit.flag]);
+    setLatLong(edit.lat_long)
+
+  }, [openEdit, edit.id, edit.name, edit.code, edit.flag, edit.lat_long]);
 
   return (
     <div>
@@ -70,6 +72,13 @@ export default function EditDialog(props: PropsType) {
             variant="standard"
             value={flag}
             onChange={(e) => setFlag(e.target.value)}
+          />
+          <TextField
+              id="lat_long"
+              label="LatLong"
+              variant="standard"
+              value={lat_long}
+              onChange={(e) => setLatLong(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
