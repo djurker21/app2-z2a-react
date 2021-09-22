@@ -17,6 +17,7 @@ import {
 import API from "../../api";
 
 export type Country = {
+  id: number;
   name: string;
   code: string;
   flag: string;
@@ -24,7 +25,7 @@ export type Country = {
 
 const countriesInit: Country[] = [];
 
-const initValues = { name: "", code: "", flag: "" };
+const initValues = { id: 0, name: "", code: "", flag: "" };
 
 export default function CML() {
   const [openEdit, setOpenEdit] = useState(false);

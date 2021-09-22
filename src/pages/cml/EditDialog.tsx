@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { Country } from "./CML";
+import API from "../../api";
 
 type PropsType = {
   openEdit: boolean;
@@ -20,21 +21,24 @@ export default function EditDialog(props: PropsType) {
   const { openEdit, handleClose, edit } = props;
   const [open, setOpen] = useState(openEdit);
 
+  const [id, setId] = useState(0);
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [flag, setFlag] = useState("");
 
-  function handleSave() {
+  async function handleSave() {
     console.log({ name, code, flag });
+    await API.patch(`countries/${id}`, { id, name, code, flag });
     handleClose();
   }
 
   React.useEffect(() => {
     setOpen(openEdit);
+    setId(edit.id);
     setName(edit.name);
     setCode(edit.code);
     setFlag(edit.flag);
-  }, [openEdit, edit.name, edit.code, edit.flag]);
+  }, [openEdit, edit.id, edit.name, edit.code, edit.flag]);
 
   return (
     <div>

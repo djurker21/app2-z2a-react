@@ -8,7 +8,7 @@ import {
   DialogActions,
 } from "@mui/material";
 import { useState } from "react";
-import API from '../../api';
+import API from "../../api";
 
 export default function AddDialog() {
   const [open, setOpen] = useState(false);
@@ -20,11 +20,11 @@ export default function AddDialog() {
   const [flag, setFlag] = useState("");
 
   async function handleSave() {
-    console.log({name, code, flag});
+    console.log({ name, code, flag });
     setName("");
     setCode("");
     setFlag("");
-    await API.post('countries', {name, code, flag});
+    await API.post("countries", { name, code, flag });
     handleClose();
   }
 
